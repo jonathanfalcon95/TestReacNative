@@ -10,12 +10,13 @@ import {
   Dimensions,
 } from 'react-native';
 import { colors, fonts } from '../../styles';
-
+//import { apiFetch } from '../../api'
 import { RadioGroup, GridRow } from '../../components';
 
 export default class GridsScreen extends React.Component {
+  
   _getRenderItemFunction = () =>
-    [this.renderRowOne, this.renderRowTwo, this.renderRowThree][
+    [this.renderRowTwo, this.renderRowTwo, this.renderRowThree][
       this.props.tabIndex
     ];
 
@@ -25,6 +26,11 @@ export default class GridsScreen extends React.Component {
       params: { ...article },
     });
   };
+
+  componentWillMount(){
+ 
+  
+  }
 
   renderRowOne = rowData => {
     const cellViews = rowData.item.map(item => (
@@ -62,14 +68,13 @@ export default class GridsScreen extends React.Component {
     <TouchableOpacity
       key={item.id}
       style={styles.itemTwoContainer}
-      onPress={() => this._openArticle(item)}
     >
       <View style={styles.itemTwoContent}>
         <Image style={styles.itemTwoImage} source={{ uri: item.image }} />
         <View style={styles.itemTwoOverlay} />
         <Text style={styles.itemTwoTitle}>{item.title}</Text>
         <Text style={styles.itemTwoSubTitle}>{item.subtitle}</Text>
-        <Text style={styles.itemTwoPrice}>{item.price}</Text>
+        <Text style={styles.itemTwoPrice}>{item.price}{" "} ARG</Text>
       </View>
     </TouchableOpacity>
   );
@@ -116,19 +121,14 @@ export default class GridsScreen extends React.Component {
 
   render() {
     const groupedData =
-      this.props.tabIndex === 0
+      this.props.tabIndex === 1
         ? GridRow.groupByRows(this.props.data, 2)
         : this.props.data;
 
     return (
       <View style={styles.container}>
         <View style={{ height: 50 }}>
-          <RadioGroup
-            selectedIndex={this.props.tabIndex}
-            items={this.props.tabs}
-            onChange={this.props.setTabIndex}
-            underline
-          />
+         
         </View>
         <FlatList
           keyExtractor={item =>

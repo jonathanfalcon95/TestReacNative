@@ -23,11 +23,11 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
+      {/* <ImageBackground
         source={require('../../../assets/images/background.png')}
         style={styles.bgImage}
         resizeMode="cover"
-      >
+      > */}
         <View style={styles.section}>
           <Text size={20} white>
             Home
@@ -35,7 +35,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         </View>
         <View style={styles.section}>
           <Text color="#19e7f7" size={15}>
-            The smartest Way to build your mobile app
+            Test
           </Text>
           <Text size={30} bold white style={styles.title}>
             React Native Starter
@@ -67,7 +67,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             </TouchableOpacity>
           </View>
         </View>
-      </ImageBackground>
+      {/* </ImageBackground> */}
     </View>
   );
 }

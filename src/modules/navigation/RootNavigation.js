@@ -24,7 +24,7 @@ const stackNavigator = createStackNavigator(
     Main: {
       screen: MainTabNavigator,
       navigationOptions: () => ({
-        title: 'React Native Starter',
+        title: 'Cotizaciones ARG',
         headerLeft: null,
         headerBackground: (
           <Image

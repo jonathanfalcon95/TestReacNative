@@ -2,132 +2,86 @@ import { compose, withState } from 'recompose';
 
 import GridView from './GridsView';
 
-const listData = [
-  {
+ Number.prototype.format = function (n = 2, x = 3, s = '.', c = ',') {
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')', num = this.toFixed(Math.max(0, ~~n));
+    return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+  };
+
+
+getQuations=()=>{
+  let listData = [
+    
+  ];
+
+
+
+//Peticion para cotizacion del dolar
+  fetch('https://api.cambio.today/v1/quotes/USD/ARS/json?quantity=1&key=2088|qsFN6SwbBoo^F*cmNTKkHSwaJ1kk59Lq')
+  .then((response) =>response.json()
+)    .then((responseJson) => {
+    //alert(responseJson.result.value);
+   listData.push({
     id: 1,
-    brand: 'Citizen',
-    title: 'CITIZEN ECO-DRIVE',
-    subtitle: 'Limited Edition',
-    price: '$129.99',
-    badge: 'NEW',
-    badgeColor: '#3cd39f',
+    title: 'USD Dolar',
+    subtitle: 'Cotizacion de 1 dolar respecto al peso argentino',
+    price: responseJson.result.value.format(),
     image:
-      'https://reactnativestarter.com/demo/images/city-sunny-people-street.jpg',
-  },
-  {
-    id: 2,
-    brand: 'Weeknight',
-    title: 'NEXT-LEVEL WEAR',
-    subtitle: 'Office, prom or special parties is all dressed up',
-    price: '$29.99',
-    priceFrom: true,
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-26549.jpg',
-  },
-  {
-    id: 3,
-    brand: 'Mad Perry',
-    title: 'CITIZEN ECO-DRIVE',
-    subtitle: 'Office, prom or special parties is all dressed up',
-    price: '$29.99',
-    priceFrom: true,
-    badge: 'SALE',
-    badgeColor: '#ee1f78',
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-30360.jpg',
-  },
-  {
-    id: 4,
-    brand: 'Citizen',
-    title: 'CITIZEN ECO-DRIVE',
-    subtitle: 'Limited Edition',
-    price: '$129.99',
-    badge: 'NEW',
-    badgeColor: 'green',
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-37839.jpg',
-  },
-  {
-    id: 5,
-    brand: 'Weeknight',
-    title: 'NEXT-LEVEL WEAR',
-    subtitle: 'Office, prom or special parties is all dressed up',
-    price: '$29.99',
-    priceFrom: true,
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-69212.jpg',
-  },
-  {
-    id: 6,
-    brand: 'Mad Perry',
-    title: 'CITIZEN ECO-DRIVE',
-    subtitle: 'Office, prom or special parties is all dressed up',
-    price: '$29.99',
-    priceFrom: true,
-    badge: 'SALE',
-    badgeColor: 'red',
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-108061.jpg',
-  },
-  {
-    id: 7,
-    brand: 'Citizen',
-    title: 'CITIZEN ECO-DRIVE',
-    subtitle: 'Limited Edition',
-    price: '$129.99',
-    badge: 'NEW',
-    badgeColor: '#3cd39f',
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-126371.jpg',
-  },
-  {
-    id: 8,
-    brand: 'Weeknight',
-    title: 'NEXT-LEVEL WEAR',
-    subtitle: 'Office, prom or special parties is all dressed up',
-    price: '$29.99',
-    priceFrom: true,
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-165888.jpg',
-  },
-  {
-    id: 9,
-    brand: 'Mad Perry',
-    title: 'CITIZEN ECO-DRIVE',
-    subtitle: 'Office, prom or special parties is all dressed up',
-    price: '$29.99',
-    priceFrom: true,
-    badge: 'SALE',
-    badgeColor: '#ee1f78',
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-167854.jpg',
-  },
-  {
-    id: 10,
-    brand: 'Citizen',
-    title: 'CITIZEN ECO-DRIVE',
-    subtitle: 'Limited Edition',
-    price: '$129.99',
-    badge: 'NEW',
-    badgeColor: 'green',
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-173427.jpg',
-  },
-  {
-    id: 11,
-    brand: 'Weeknight',
-    title: 'NEXT-LEVEL WEAR',
-    subtitle: 'Office, prom or special parties is all dressed up',
-    price: '$29.99',
-    priceFrom: true,
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-175696.jpg',
-  },
-  {
-    id: 12,
-    brand: 'Mad Perry',
-    title: 'CITIZEN ECO-DRIVE',
-    subtitle: 'Office, prom or special parties is all dressed up',
-    price: '$29.99',
-    priceFrom: true,
-    badge: 'SALE',
-    badgeColor: 'red',
-    image: 'https://reactnativestarter.com/demo/images/pexels-photo-175733.jpg',
-  },
-];
+      'https://images5.alphacoders.com/431/thumb-350-431731.jpg',
+  },)
+
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+//Peticion para cotizacion del euro
+fetch('https://api.cambio.today/v1/quotes/EUR/ARS/json?quantity=1&key=2088|qsFN6SwbBoo^F*cmNTKkHSwaJ1kk59Lq')
+.then((response) =>response.json()
+)    .then((responseJson) => {
+  //alert(responseJson.result.value);
+ listData.push({
+  id: 2,
+  title: 'EUR Euro',
+  subtitle: 'Cotizacion de 1 Euro respecto al peso argentino',
+  price: responseJson.result.value.format(),
+  image:
+    'https://mises-media.s3.amazonaws.com/styles/social_media_1200_x_1200/s3/static-page/img/euro_1.PNG?itok=cVxNebm6',
+},)
+
+})
+.catch((error) => {
+  console.error(error);
+});
+
+//Peticion para cotizacion del real
+fetch('https://api.cambio.today/v1/quotes/BRL/ARS/json?quantity=1&key=2088|qsFN6SwbBoo^F*cmNTKkHSwaJ1kk59Lq')
+.then((response) =>response.json()
+)    .then((responseJson) => {
+  //alert(responseJson.result.value);
+ listData.push({
+  id: 3,
+  title: 'BRL Real',
+  subtitle: 'Cotizacion de 1 Real respecto al peso argentino',
+  price: responseJson.result.value.format(),
+  image:
+    'https://www.latercera.com/wp-content/uploads/2018/06/Real-brasileno.jpg',
+},)
+
+})
+.catch((error) => {
+  console.error(error);
+});
+
+
+
+
+
+  return listData;
+};
+
 
 export default compose(
   withState('tabIndex', 'setTabIndex', 0),
   withState('tabs', 'setTabs', ['Grid', 'List 1', 'List 2']),
-  withState('data', 'setData', listData),
+  withState('data', 'setData', getQuations()),
 )(GridView);

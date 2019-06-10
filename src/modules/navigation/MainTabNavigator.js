@@ -59,55 +59,60 @@ const styles = StyleSheet.create({
 export default createBottomTabNavigator(
   {
     Home: {
-      screen: HomeScreen,
-      navigationOptions: {
-        header: null,
-      },
-    },
-    Calendar: {
-      screen: CalendarScreen,
-      navigationOptions: {
-        header: (
-          <View style={styles.headerContainer}>
-            <Image style={styles.headerImage} source={hederBackground} />
-            <Text style={styles.headerCaption}>Calendar</Text>
-          </View>
-        ),
-      },
-    },
-    Grids: {
       screen: GridsScreen,
       navigationOptions: {
         header: (
-          <View style={styles.headerContainer}>
-            <Image style={styles.headerImage} source={hederBackground} />
-            <Text style={styles.headerCaption}>Grids</Text>
-          </View>
-        ),
+                <View style={styles.headerContainer}>
+                  <Image style={styles.headerImage} source={hederBackground} />
+                  <Text style={styles.headerCaption}>Grids</Text>
+                </View>
+              ),
       },
     },
-    Pages: {
-      screen: PagesScreen,
-      navigationOptions: {
-        header: (
-          <View style={styles.headerContainer}>
-            <Image style={styles.headerImage} source={hederBackground} />
-            <Text style={styles.headerCaption}>Pages</Text>
-          </View>
-        ),
-      },
-    },
-    Components: {
-      screen: ComponentsScreen,
-      navigationOptions: {
-        header: (
-          <View style={styles.headerContainer}>
-            <Image style={styles.headerImage} source={hederBackground} />
-            <Text style={styles.headerCaption}>Components</Text>
-          </View>
-        ),
-      },
-    },
+    // Calendar: {
+    //   screen: CalendarScreen,
+    //   navigationOptions: {
+    //     header: (
+    //       <View style={styles.headerContainer}>
+    //         <Image style={styles.headerImage} source={hederBackground} />
+    //         <Text style={styles.headerCaption}>Calendar</Text>
+    //       </View>
+    //     ),
+    //   },
+    // },
+    // Grids: {
+    //   screen: GridsScreen,
+    //   navigationOptions: {
+    //     header: (
+    //       <View style={styles.headerContainer}>
+    //         <Image style={styles.headerImage} source={hederBackground} />
+    //         <Text style={styles.headerCaption}>Grids</Text>
+    //       </View>
+    //     ),
+    //   },
+    // },
+    // Pages: {
+    //   screen: PagesScreen,
+    //   navigationOptions: {
+    //     header: (
+    //       <View style={styles.headerContainer}>
+    //         <Image style={styles.headerImage} source={hederBackground} />
+    //         <Text style={styles.headerCaption}>Pages</Text>
+    //       </View>
+    //     ),
+    //   },
+    // },
+    // Components: {
+    //   screen: ComponentsScreen,
+    //   navigationOptions: {
+    //     header: (
+    //       <View style={styles.headerContainer}>
+    //         <Image style={styles.headerImage} source={hederBackground} />
+    //         <Text style={styles.headerCaption}>Components</Text>
+    //       </View>
+    //     ),
+    //   },
+    // },
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
