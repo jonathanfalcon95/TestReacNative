@@ -1,4 +1,4 @@
-# React Native QuationFront 
+# React Native Quotation
 ![Captura](https://github.com/jonathanfalcon95/TestReacNative/blob/master/assets/images/Screenshot_1560148848.png)
 
 ## Getting Started
@@ -28,8 +28,10 @@ yarn run:android
 
 ## Documentation
 
-Our handy documentation can be found on official RNS website: https://docs.reactnativestarter.com 
+Boilerplate   website: https://docs.reactnativestarter.com 
+
+## API
+
+https://cambio.today/api/quotes/full
 
 
-
-[Mozilla Public License 2.0](LICENSE)
